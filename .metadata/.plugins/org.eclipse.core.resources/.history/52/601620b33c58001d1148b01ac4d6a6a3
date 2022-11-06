@@ -1,0 +1,30 @@
+package com.hostmdy.model;
+
+public class Dress {
+	private int id;
+	private String code;
+	private String size;
+	private String color;
+	private int price;
+	
+	public Dress() {}
+	
+	public Dress(String code, String size, String color, int price) {
+		super();
+		this.code = code;
+		this.size = size;
+		this.color = color;
+		this.price = price;
+	}
+
+	public Dress(int id, String code, String size, String color, int price) {
+		super();
+		this.id = id;
+		this.code = code;
+		this.size = size;
+		this.color = color;
+		this.price = price;
+	}
+	
+	
+}
