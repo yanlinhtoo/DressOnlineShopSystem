@@ -23,7 +23,7 @@
     </head>
 <body>
 	   <!-- Responsive navbar-->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
             <div class="container">
                 <a class="navbar-brand" href="#"><img id="logo" src="assets/HQ.jpg" alt="logo"/> Add New Jean</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -50,25 +50,25 @@
 		        
 		        <div class="mb-3">
 		            <label for="code" class="col-sm-3 control-label">Enter Code</label>
-		            <div class="col-sm-9">
+		            <div class="col-sm-12">
 		                <input type="text" id="code" name="code" placeholder="Code" class="form-control" autofocus="autofocus">
 		            </div>
 		        </div>
 		        <div class="mb-3">
 		            <label for="size" class="col-sm-3 control-label">Enter Size</label>
-		            <div class="col-sm-9">
+		            <div class="col-sm-12">
 		                <input type="text" id="size" name="size" placeholder="Size" class="form-control" autofocus="autofocus">
 		            </div>
 		        </div>
 		        <div class="mb-3">
 		            <label for="color" class="col-sm-3 control-label">Enter Color</label>
-		            <div class="col-sm-9">
+		            <div class="col-sm-12">
 		                <input type="text" id="color" name="color" placeholder="Color" class="form-control" autofocus="autofocus">
 		            </div>
 		        </div>
 		        <div class="mb-3">
 		            <label for="price" class="col-sm-3 control-label">Enter Price</label>
-		            <div class="col-sm-9">
+		            <div class="col-sm-12">
 		                <input type="number" id="price" name="price" placeholder="Price" class="form-control">
 		            </div>
 		        </div>

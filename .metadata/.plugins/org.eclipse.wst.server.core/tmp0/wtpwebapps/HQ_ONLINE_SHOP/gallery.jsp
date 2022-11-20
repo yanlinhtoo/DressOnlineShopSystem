@@ -23,88 +23,106 @@
     </head>
     <body>
         <!-- Responsive navbar-->
-       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
             <div class="container">
             <c:if test="${fn:contains(user.role,'admin')}">
-                <a class="navbar-brand" href="#"><img id="logo" src="assets/HQ.jpg" alt="logo"/>Gallery</a>
+                <a class="navbar-brand"  href="#"><img id="logo" src="assets/HQ.jpg" alt="logo"/>Gallery</a>
             </c:if>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+            </button>
             
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                     
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><c:out value="${user.username }"></c:out></a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="dress?mode=LOGOUT">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            	<c:url var="loadLink" value="user">
+	            	<c:param name="mode" value="LOAD"></c:param>
+	            </c:url>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><c:out value="${user.username}"></c:out></a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        	<li>
+                        		<c:if test="${fn:contains(user.role,'admin')}">
+                        			<a class="dropdown-item" href="${loadLink}" action="">User Manage</a>
+                        		</c:if>
+                        	</li>                     
+                       		<li>
+                            	<a class="dropdown-item" href="dress?mode=LOGOUT">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+               
             </div>
         </nav>
         
-    
+	    <div>
+			<c:if test="${fn:contains(user.role,'admin')}">
+				<form action="dress" method="post">
+					<input type="hidden" name="mode" value="GALLERY">
+					<button
+						style="margin-top: 40px; margin-left: 40px; background-color: coral; border: 1px solid coral; border-radius: 10px; width: 120px; height: 40px;">Show
+						List</button>
+				</form>
+			</c:if>
+		</div>
         
+<!--         Go to JeanRegister page -->
         <div class="container mt-4">
-            <form action="dress" method="post">
-       			<input type="hidden" name="mode" value="GALLERY">
-       			<div class="row">
-       				
-			        <div class="col-3">
-				        <div>
+        	<div class="row" style="margin-left: 40px;">
+       		        <div class="col-3">
+				        <div class="imgdiv">
 				        	<img src="assets/1.jpg" class="mb-4" width="150px" height="300px" alt="">
 				        </div>
-			            <a href="jeanRegister.jsp">Add</a>
+			            <a href="jeanRegister.jsp" class="g1">Add</a>
 			        </div>
 			        <div class="col-3">
-				        <div>
+				        <div class="imgdiv">
 				        	<img src="assets/2.jpg" class="mb-4" width="150px" height="300px" alt="">
 				        </div>
-			            <a href="jeanRegister.jsp">Add</a>		            
+			            <a href="jeanRegister.jsp" class="g1">Add</a>		            
 			        </div>
 			        <div class="col-3">
-			        	<div>
+			        	<div class="imgdiv">
 			        		<img src="assets/3.jpg" class="mb-4" width="150px" height="300px" alt="">
 			        	</div>
-			        	<a href="jeanRegister.jsp">Add</a>
+			        	<a href="jeanRegister.jsp" class="g1">Add</a>
 			        </div>
 			     	<div class="col-3">
-			        	<div>
+			        	<div class="imgdiv">
 			            	<img src="assets/4.jpg" class="mb-4" width="150px" height="300px" alt="">
 			        	</div>		        
-			            <a href="jeanRegister.jsp">Add</a>
+			            <a href="jeanRegister.jsp" class="g1">Add</a>
 			        </div>
 	    			<div class="col-3">
-				        <div>
+				        <div class="imgdiv">
 				        	<img src="assets/5.jpg" class="mb-4" width="150px" height="300px" alt="">
 				        </div>
-			            <a href="jeanRegister.jsp">Add</a>
+			            <a href="jeanRegister.jsp" class="g1">Add</a>
 			        </div>
 			        <div class="col-3">
-				        <div>
+				        <div class="imgdiv">
 				        	<img src="assets/6.jpg" class="mb-4" width="150px" height="300px" alt="">
 				        </div>
-			            <a href="jeanRegister.jsp">Add</a>		            
+			            <a href="jeanRegister.jsp" class="g1">Add</a>		            
 			        </div>
 			        <div class="col-3">
-			        	<div>
+			        	<div class="imgdiv">
 			        		<img src="assets/7.jpg" class="mb-4" width="150px" height="300px" alt="">
 			        	</div>
-			        	<a href="jeanRegister.jsp">Add</a>
+			        	<a href="jeanRegister.jsp" class="g1">Add</a>
 			        </div>
 			     	<div class="col-3">
-			        	<div>
+			        	<div class="imgdiv">
 			            	<img src="assets/8.jpg" class="mb-4" width="150px" height="300px" alt="">
 			        	</div>		        
-			            <a href="jeanRegister.jsp">Add</a>
+			            <a href="jeanRegister.jsp" class="g1">Add</a>
 			        </div>
        			</div>
-      		</form>
+      	
         </div>
         
-        <!-- Bootstrap core JS-->
+        <!-- Bootstrap core JS-->s
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>

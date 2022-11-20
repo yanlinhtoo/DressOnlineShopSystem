@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -61,6 +63,31 @@ public class UserDAO {
 		return user;
 	}
 	
+	public List<User> loadUser() {
+		List<User> user = new ArrayList<>();
+		try {
+			connection = dataSource.getConnection();
+			stmt = connection.createStatement();
+			rs = stmt.executeQuery("Select * from user;");
+			
+			while (rs.next()) {
+				user.add(new User(
+						rs.getInt("id"),
+						rs.getString("username"),
+						rs.getString("email"),
+						rs.getString("password"),
+						rs.getString("role"))); 
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return user;
+		
+	}
+	
 	
 	public int createUser(User user) {
 		int rowEffected = 0;
@@ -98,9 +125,92 @@ public class UserDAO {
 		return rowEffected;
 	}
 	
+	public int deleteUser(int id) {
+		int rowEffected = 0;
+		try {
+			connection = dataSource.getConnection();
+			pStmt = connection.prepareStatement("delete from user where id=?;");
+			pStmt.setInt(1, id);
+			rowEffected = pStmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(connection!=null)
+					connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return rowEffected;
+		
+	}
 	
+	public int updateUser(User user) {
+		int rowEffected = 0;
+		try {
+			connection = dataSource.getConnection();
+			pStmt = connection.prepareStatement(
+					"UPDATE `user` SET "
+					+ "`username` = ?,"
+					+ "`email` = ?,"
+					+ "`password`=?,"
+					+ "`role` =? WHERE (`id` = ?);"
+					);
+			pStmt.setString(1,user.getUsername());
+			pStmt.setString(2,user.getEmail());
+			pStmt.setString(3,user.getPassword());
+			pStmt.setString(4,user.getRole());
+			pStmt.setInt(5,user.getId());
+			
+			rowEffected = pStmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+				try {
+					if(connection!=null)
+						connection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
+		return rowEffected;
+	}
 	
-	
+	public User UserList(int id){
+		User user = null;
+		try {
+			connection = dataSource.getConnection();
+			stmt = connection.createStatement();
+			rs = stmt.executeQuery("Select * from user where id='"+id+"';");
+			
+			while(rs.next()) {
+				user = new User(
+						rs.getInt("id"),
+						rs.getString("username"),
+						rs.getString("email"),
+						rs.getString("password"),
+						rs.getString("role"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(connection!=null)
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return user;
+	}
 	
 	public boolean isValidUser(String email,String originalPassword) {
 		User user = getUserByEmail(email);

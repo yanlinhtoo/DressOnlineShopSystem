@@ -21,9 +21,10 @@
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/custom.css" rel="stylesheet" />
     </head>
+    
     <body>
         <!-- Responsive navbar-->
-       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
             <div class="container">
             <c:if test="${fn:contains(user.role,'admin')}">
                 <a class="navbar-brand" href="#"><img id="logo" src="assets/HQ.jpg" alt="logo"/> Add List</a>
@@ -32,9 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         
-                         <c:if test="${fn:contains(user.role,'admin') }">
                         <li class="nav-item"><a class="nav-link" href="gallery.jsp">Gallery</a></li>
-                        </c:if>
                         
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><c:out value="${user.username }"></c:out></a>
@@ -60,25 +59,25 @@
                     </thead>
                     <tbody>
                     	<c:forEach var="dress" items="${dressList}">
-                    	<c:url var="updateLink" value="dress">
-                    		<c:param name="mode" value="LOAD"></c:param>
-                    		<c:param name="id" value="${dress.id}"></c:param>
-                    	</c:url>
-                    	<c:url var="deleteLink" value="dress">
-                    		<c:param name="mode" value="DELETE"></c:param>
-                    		<c:param name="id" value="${dress.id}"></c:param>
-                    	</c:url>
-                    	<tr>
-                            <td><c:out value="${dress.id}"></c:out></td>
-                            <td><c:out value="${dress.code}"></c:out></td>
-                            <td><c:out value="${dress.size}"></c:out></td>
-                            <td><c:out value="${dress.color}"></c:out></td>
-                            <td><c:out value="${dress.price}"></c:out></td>
-                            <c:if test="${fn:contains(user.role,'admin')}">
-                 	        	<td><a href="${updateLink}" class="btn btn-primary">Edit</a></td>
-								<td><a href="${deleteLink}" id="delete" class="btn btn-danger" onclick="return confirm('Are you sure to delete this result?;')">Delete</a></td>
-                            </c:if>
-                      </tr>
+	                    	<c:url var="updateLink" value="dress"> <!-- Go to dress Controller -->
+	                    		<c:param name="mode" value="LOAD"></c:param>
+	                    		<c:param name="id" value="${dress.id}"></c:param>
+	                    	</c:url>
+	                    	<c:url var="deleteLink" value="dress">
+	                    		<c:param name="mode" value="DELETE"></c:param>
+	                    		<c:param name="id" value="${dress.id}"></c:param>
+	                    	</c:url>
+	                    	<tr>
+	                            <td><c:out value="${dress.id}"></c:out></td>
+	                            <td><c:out value="${dress.code}"></c:out></td>
+	                            <td><c:out value="${dress.size}"></c:out></td>
+	                            <td><c:out value="${dress.color}"></c:out></td>
+	                            <td><c:out value="${dress.price}"></c:out></td>
+	                            <c:if test="${fn:contains(user.role,'admin')}">
+	                 	        	<td><a href="${updateLink}" class="btn btn-primary">Edit</a></td>
+									<td><a href="${deleteLink}" id="delete" class="btn btn-danger" onclick="return confirm('Are you sure to delete this result?')">Delete</a></td>
+	                            </c:if>
+	                      </tr>
                     	</c:forEach>
                     </tbody>
                 </table>

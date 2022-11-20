@@ -46,7 +46,9 @@ public class DressController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(false);
+		
 		User user = (User) session.getAttribute("user");
+		
 		if(user!=null) {
 			String mode = request.getParameter("mode");
 		if(mode == null)
@@ -62,7 +64,7 @@ public class DressController extends HttpServlet {
 			break;
 			case "DELETE": deleteDress(request, response);
 			break;
-			case "GALLERY": deleteDress(request, response);
+			case "GALLERY": showforGallery(request, response);
 			break;
 			case "LOGOUT": session.invalidate();
 				response.sendRedirect("signIn.jsp");
@@ -76,8 +78,14 @@ public class DressController extends HttpServlet {
 		}
 		
 	}
-
-	
+	//for list button
+	private void showforGallery(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Dress> dressList = this.dressDAO.getDressList();
+		request.setAttribute("dressList", dressList);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+		rd.forward(request, response);
+	}
 	
 	
 	private void showDressList(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -96,6 +104,7 @@ public class DressController extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		request.setAttribute("user", user);
+		
 		int id = Integer.parseInt(request.getParameter("id"));
 		Dress dress = this.dressDAO.DressList(id);
 		request.setAttribute("dress", dress);
@@ -107,6 +116,7 @@ public class DressController extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		request.setAttribute("user", user);
+		
 		int id = Integer.parseInt(request.getParameter("id"));
 		String code = request.getParameter("code");
 		String size = request.getParameter("size");

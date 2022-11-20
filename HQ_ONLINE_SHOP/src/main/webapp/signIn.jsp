@@ -19,36 +19,36 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/custom.css" rel="stylesheet" />
+        
     </head>
-<body>
+	<body>
 		<div class="container">
 	    	<form action="user" method="post" >
-		        <h2 class="mb-3 text-center">Sign In</h2>
+		        <h2 class="mb-3 mt-4 text-center ">Sign In</h2>
 		        <c:if test="${loginFail }">
 		        	<div>
 		        		<span class="mb-3">Username or password is incorrect!</span>
 		        	</div>
 		        </c:if>
+		        
 		        <input type="hidden" name="mode" value="SIGNIN">
 		      
-		        <div class="mb-3">
-		            <label for="size" class="col-sm-3 control-label">Enter E-mail</label>
-		            <div class="col-sm-9">
-		                <input type="email" id="email" name="email" placeholder="Emain" class="form-control" autofocus="autofocus">
-		            </div>
-		        </div>
-		        <div class="mb-3">
-		            <label for="color" class="col-sm-3 control-label">Enter Password</label>
-		            <div class="col-sm-9">
-		                <input type="text" id="password" name="password" placeholder="Password" class="form-control" autofocus="autofocus">
-		            </div>
-		        </div>
-		       
-		       
-				<button type="submit" class="btn btn-primary">Submit</button>
-				
-				
-    		</form>
+		      	<div class="row">
+		      		<div class="mb-3">
+		            	<label for="size" class="col-sm-3 control-label">Enter E-mail</label>
+		            	<div>
+		                	<input type="email" id="email" name="email" placeholder="Emain" class="form-control" autofocus="autofocus">
+		            	</div>
+		        	</div>
+		        	<div class="mb-3">
+		            	<label for="color" class="col-sm-3 control-label">Enter Password</label>
+		            	<div>
+		               		<input type="password" id="password" name="password" placeholder="Password" class="form-control" autofocus="autofocus">
+		            	</div>
+		        	</div>
+		      	</div>
+		      	<button type="submit" class="btn btn-primary">Submit</button>
+		    </form>
     		<p>Don't have an account? <a href="signUp.jsp">Please Sign up</a> </p>
 		</div> 
 

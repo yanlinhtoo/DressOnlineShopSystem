@@ -24,24 +24,23 @@
 	      
 		<div class="container">
 	    	<form action="user" method="post" >
-		        <h2 class="mb-3 text-center">Sign Up</h2>
+		        <h2 class="mb-3 mt-4 text-center">Sign Up</h2>
 		        <input type="hidden" name="mode" value="SIGNUP">
-		        
 		        <div class="mb-3">
 		            <label for="code" class="col-sm-3 control-label">Enter Username</label>
-		            <div class="col-sm-9">
+		            <div class="col-sm-12">
 		                <input type="text" id="username" name="username" placeholder="Username" class="form-control" autofocus="autofocus">
 		            </div>
 		        </div>
 		        <div class="mb-3">
 		            <label for="size" class="col-sm-3 control-label">Enter E-mail</label>
-		            <div class="col-sm-9">
+		            <div class="col-sm-12">
 		                <input type="email" id="email" name="email" placeholder="Emain" class="form-control" autofocus="autofocus">
 		            </div>
 		        </div>
 		        <div class="mb-3">
 		            <label for="color" class="col-sm-3 control-label">Enter Password</label>
-		            <div class="col-sm-9">
+		            <div class="col-sm-12">
 		                <input type="text" id="password" name="password" placeholder="Password" class="form-control" autofocus="autofocus">
 		            </div>
 		        </div>
@@ -51,8 +50,6 @@
 		        </div>
 		       
 				<button type="submit" class="btn btn-primary">Submit</button>
-				
-				
     		</form>
     		<p>Already has an account? <a href="signin.jsp">Please Sign In</a> </p>
 		</div> 
