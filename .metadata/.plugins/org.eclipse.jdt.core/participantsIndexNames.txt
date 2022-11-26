@@ -1,5 +1,3 @@
 INDEX VERSION 1.131
-C:\DressOnlineShopSystem\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3268710721.index
-\HQ_ONLINE_SHOP\src\main\java
-C:\DressOnlineShopSystem\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2530960340.index
+D:\temp\DressOnlineShopSystem\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3268710721.index
 \HQ_ONLINE_SHOP\src\main\java
